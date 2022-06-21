@@ -1,0 +1,29 @@
+package com.gahlot.project.gahlot.newsapp;
+
+import com.gahlot.project.gahlot.newsapp.modelClass.mainNewsModel;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+
+public interface apiInterface {
+    String BASE_URL = "https://newsapi.org/v2/";
+
+    @GET("top-headlines")
+    Call<mainNewsModel> getNews(
+        @Query("country") String country,
+        @Query("pageSize") int pageSize,
+        @Query("apiKey") String apiKey
+    );
+
+    @GET("top-headlines")
+    Call<mainNewsModel> getCategoryNews(
+            @Query("country") String country,
+            @Query("category") String category,
+            @Query("pageSize") int pageSize,
+            @Query("apiKey") String apiKey
+    );
+
+
+
+}
